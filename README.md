@@ -38,7 +38,7 @@ go get github.com/GJRTimmer/nzb
         - Exists ```bool```
           
 Exists is special addition, I use it in combination when saving and loading
-because with the NNTP STAT % command it is possible to check for
+because with the NNTP ```STAT %``` command it is possible to check for
 the existence of a article on the NNTP server before fetching the body
 this can be used to quickly verify if a download is completly available.
 other project which uses this shall be uploaded soon.
