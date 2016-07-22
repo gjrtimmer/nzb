@@ -1,0 +1,2 @@
+# nzb
+Golang NZB Library
