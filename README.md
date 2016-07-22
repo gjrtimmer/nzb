@@ -13,7 +13,7 @@ go get github.com/GJRTimmer/nzb
 
 ## NZB Structure after parsing
 
-NZB
+```*NZB```
  - ```Size``` (Total size of the content in bytes (int))
  - FileSets ```[]Fileset``` (NZB may contain multiple filesets)
    - Name ```string```
