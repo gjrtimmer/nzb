@@ -28,8 +28,8 @@ func (s Subject) extractName() (string, error) {
     return name, nil
 }
 
-// Subject
-func (s Subject) extractFilename() (string, error) {
+// ExtractFilename from subject
+func (s Subject) ExtractFilename() (string, error) {
     match := subjectFilenameRegex.FindStringSubmatch(string(s))
     if match == nil {
         return "", fmt.Errorf("unable to extract filename from '%s'", string(s))
@@ -39,7 +39,10 @@ func (s Subject) extractFilename() (string, error) {
     return match[1], nil
 }
 
-func (s Subject) extractPartNumber() (int, error) {
+// ExtractPartNumber from subject
+// Example: ...[12/77]..., this will extract 12
+// only if it is available within the subject
+func (s Subject) ExtractPartNumber() (int, error) {
     match := subjectPartsRegex.FindStringSubmatch(string(s))
     if match == nil {
         return 0, fmt.Errorf("unable to extract part number from '%s'", string(s))
@@ -50,7 +53,10 @@ func (s Subject) extractPartNumber() (int, error) {
     return p, nil
 }
 
-func (s Subject) extractTotalParts() (int, error) {
+// ExtractTotalParts from subject
+// Example: ...[12/77]..., this will extract 77
+// only if it is available within the subject
+func (s Subject) ExtractTotalParts() (int, error) {
     match := subjectPartsRegex.FindStringSubmatch(string(s))
     if match == nil {
         return 0, fmt.Errorf("unable to extract total parts from '%s'", string(s))
@@ -61,7 +67,11 @@ func (s Subject) extractTotalParts() (int, error) {
     return p, nil
 }
 
-func (s Subject) extractYEncPartNumber() (int, error) {
+// ExtractYEncPartNumber from subject
+// Example: ...(001/420)..., this will extract 001
+// yEnc encoding parts can almost
+// alwwys be found at the end of a subject string
+func (s Subject) ExtractYEncPartNumber() (int, error) {
     match := subjectYEncPartsRegex.FindStringSubmatch(string(s))
     if match == nil {
         return 0, fmt.Errorf("unable to extract yEnc part from '%s'", string(s))
@@ -72,7 +82,11 @@ func (s Subject) extractYEncPartNumber() (int, error) {
     return p, nil
 }
 
-func (s Subject) extractYEncTotalParts() (int, error) {
+// ExtractYEncTotalParts from subject
+// Example: ...(001/420)..., this will extract 420
+// yEnc encoding parts can almost
+// alwwys be found at the end of a subject string
+func (s Subject) ExtractYEncTotalParts() (int, error) {
     match := subjectYEncPartsRegex.FindStringSubmatch(string(s))
     if match == nil {
         return 0, fmt.Errorf("unable to extract yEnc total parts from '%s'", string(s))

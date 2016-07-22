@@ -46,7 +46,7 @@ func Parse(r io.Reader) (*NZB, error) {
     for _, f := range x.Files {
 
         // Extract filename
-        f.Filename, err = f.Subject.extractFilename()
+        f.Filename, err = f.Subject.ExtractFilename()
         if err != nil {
             return nil, err
         }
