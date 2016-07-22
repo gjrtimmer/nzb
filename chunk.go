@@ -4,6 +4,12 @@ import (
     "sync"
 )
 
+// Chunk of data to download
+type Chunk struct {
+    Groups []string
+    Segment *Segment
+}
+
 // Chunks list of all chunks within NZB
 type Chunks struct {
     c       []*Chunk
@@ -52,12 +58,6 @@ func (c *Chunks) GetChunk() *Chunk {
     }
 
     return nil
-}
-
-// Chunk of data to download
-type Chunk struct {
-    Groups []string
-    Segment *Segment
 }
 
 // EOF
