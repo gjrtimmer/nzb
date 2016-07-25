@@ -196,6 +196,7 @@ with multiple connections for example 30 connections to a single server
 and you communicate with channels the following helper function generates a list of chunks which can be
 send to the worker queue (Yes I have this all working, just need the time to upload it)
 The additional + 10 I used to make sure my workerQueue is filled up.
+See working programm @ [NZB Verify](https://github.com/GJRTimmer/nzbverify)
 ```go
 cList := chunks.GetChunks(maxConnections + 10)
 ```
