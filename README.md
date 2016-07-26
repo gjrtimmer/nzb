@@ -188,7 +188,7 @@ If you want to get the first / next chunk from the chunk list
 you can use the following this will also automatically update the
 marker
 ```go
-c := chunks.GetChunk()
+c := chunks.GetNext()
 ```
 
 When you are using a ConnectionPool to a NNTP server

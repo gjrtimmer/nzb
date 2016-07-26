@@ -46,8 +46,8 @@ func (c *Chunks) GetChunks(max int) []*Chunk {
     return chunks
 }
 
-// GetChunk get next chunk from Chunks
-func (c *Chunks) GetChunk() *Chunk {
+// GetNext get next chunk from Chunks
+func (c *Chunks) GetNext() *Chunk {
     c.mu.Lock()
     defer c.mu.Unlock()
 
