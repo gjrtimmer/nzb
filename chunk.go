@@ -1,6 +1,7 @@
 package nzb
 
 import (
+    "fmt"
     "sync"
 )
 
@@ -58,6 +59,34 @@ func (c *Chunks) GetNext() *Chunk {
     }
 
     return nil
+}
+
+// Remove chunk from chunks based on article id
+// This allows to re-continue a download
+// and remove already downloaded chunks from the chunk list
+func (c *Chunks) Remove(id string) error {
+
+    c.mu.Lock()
+    defer c.mu.Unlock()
+
+    rm := -1
+    for i, cnk := range c.c {
+        if cnk.Segment.ID == id {
+            // Found chunk to remove
+            rm = i
+        }
+    }
+
+    // Remove element
+    if rm > -1 {
+        c.c = append(c.c[:rm], c.c[rm+1:]...)
+        // Update Total
+        c.Total = len(c.c)
+
+        return nil
+    }
+
+    return fmt.Errorf("id does not exists")
 }
 
 // EOF
